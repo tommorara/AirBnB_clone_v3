@@ -5,9 +5,6 @@
 This project is part of the curriculum for learning Python, Back-end development, APIs, and web server implementation using Flask. It aims to build a RESTful API for the AirBnB clone web application.
 
 - **Project Duration:** May 23, 2024, 6:00 AM - May 28, 2024, 6:00 AM
-- **Team Members:**
-  - Abdelaziz Elsawy
-  - Tom Nyabuto
 
 ## Concepts
 
