@@ -154,7 +154,7 @@ EOF  all  create  destroy  help  quit  show  update
 No known bugs at this time. 
 
 ## Authors
-Kelvin Mabonga - [Github](https://github.com/Mabongakev) 
+Kelvin Mabonga - [Github](https://github.com/Mabongakev) Twitter @mabonga92
 Tom Morara - [Github](https://github.com/tommorara) 
 
 ## License
