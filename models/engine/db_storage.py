@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 """
 Contains the class DBStorage
@@ -110,3 +111,4 @@ class DBStorage:
             count_all_objects += self.__session.query(cls).count()
 
         return count_all_objects
+
