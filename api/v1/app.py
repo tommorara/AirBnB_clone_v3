@@ -1,34 +1,44 @@
 #!/usr/bin/python3
 
-'''create flash app'''
+"""Shared API routes. Contains status and stats"""
 
-from os import getenv
-from flask import Flask
-from models import storage
 from api.v1.views import app_views
+from flask import jsonify
+from models import storage
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
-'''create an instance of the Flask class'''
 
-app = Flask(__name__)
+@app_views.route('/status', strict_slashes=False)
+def status():
+    """Status API check. Returns status of API"""
+    return jsonify({"status": "OK"})
 
-'''register the blueprint'''
 
-app.register_blueprint(app_views)
+@app_views.route('/stats', strict_slashes=False)
+def stats():
+    """Returns count of each object class in the database"""
 
-'''Create teardown method'''
-@app.teardown_appcontext
-def close_storage(self):
-    """Closes the storage connection at the end of the request."""
-    storage.close()
+    objects = {
+        "amenities": Amenity,
+        "cities": City,
+        "places": Place,
+        "reviews": Review,
+        "states": State,
+        "users": User
+    }
 
-@app.errorhandler(404)
-def page_not_found(error):
-    """return 404"""
-    return jsonify({"error": "Not found"}), 404
+    objects_dict = {}
 
-'''create a route /status on the object app'''
+    for key, value in objects.items():
+        objects_dict[key] = storage.count(value)
 
-if __name__ == '__main__':
-    HOST = getenv('HBNB_API_HOST', '0.0.0.0')
-    PORT = int(getenv('HBNB_API_PORT', '5000'))
-    app.run(host=HOST, port=PORT, threaded=True)
+    return jsonify(objects_dict)
+
+
+if __name__ == "__main__":
+    pass
