@@ -2,6 +2,7 @@
 '''Import app_views Blueprint and jsonify from Flask'''
 from api.v1.views import app_views
 from flask import jsonify
+import sys
 
 '''Define a route /status that returns a JSON response'''
 @app_views.route("/status", methods=["GET"], strict_slashes=False)
